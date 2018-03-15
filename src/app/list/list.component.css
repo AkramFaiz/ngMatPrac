@@ -1,11 +1,20 @@
+section{
+    width: 95%;
+    margin: auto;
+    overflow: auto;
+    height: 88%;
+}
 a{
     position: fixed;
-    right: 10px;
-    bottom: 10px;
+    right: 5px;
+    bottom: 45px;
     width: 45px;
     height: 45px;
 }
 mat-card{
     margin-top:10px;
     background: rgba(0, 0, 0, 0.36);
+}
+mat-card button.mat-button{
+    min-width:85px;
 }

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { tea } from '../Classes/tea';
 import { PlaceLocation } from '../Classes/placeLocation';
 import { GeoLocationService } from '../geo-location.service';
 import { TasteRating } from '../Classes/tasteRating';
 import { Http } from '@angular/http';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-tea',
@@ -13,8 +14,13 @@ import { Http } from '@angular/http';
 })
 export class TeaComponent implements OnInit {
   tea: tea;
+  tastingR: boolean = false;
   types = ["Ginger","Cardamom","Lemon","Green"];
-  constructor(private route:ActivatedRoute,private _http:Http, private geoL:GeoLocationService) { }
+  constructor(private router:Router,
+    private route:ActivatedRoute,
+    private _http:Http, 
+    private geoL:GeoLocationService,
+  private data:DataService) { }
   routeSubs: any;
 
   // slider 
@@ -42,6 +48,14 @@ export class TeaComponent implements OnInit {
     this.tea = new tea();
     this.routeSubs = this.route.params.subscribe(params => {
       console.log(params["id"]);
+      if(params["id"]){
+        this.data.getIdList(params["id"], response =>{
+          this.tea = response;
+          if(this.tea.tastingRate){
+            this.tastingR = true;
+          }
+        })
+      }
     });
     this.geoL.reqLocation(location =>{
       if(location){
@@ -65,8 +79,15 @@ export class TeaComponent implements OnInit {
 
   submitClk(){
     console.log(this.tea);
+    this.data.save(this.tea, result=>{
+      console.log(result);
+      if(result){
+        this.router.navigate(["/"]);
+      }
+    });
   }
   cancelClk(){
     this.tea = new tea();
+    this.router.navigate(['/']);
   }
 }

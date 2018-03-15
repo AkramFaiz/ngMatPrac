@@ -63,3 +63,6 @@ app-list a > .mat-button-wrapper{
 app-tea mat-form-field .mat-input-placeholder,.mat-form-field-placeholder{
     color: #aab82c;
 }
+app-list section .mat-card{
+    box-shadow: 0px 0px 4px #6b6b6b !important;
+}

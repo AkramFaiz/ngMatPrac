@@ -10,13 +10,13 @@ export class DataService {
   constructor(private http:Http) { }
 
   getList(callback){
-    // const teaList = [
-    //   new tea("ginger","Sunny Cafe",new PlaceLocation("123 Market St","San Francisco")),
-    //   new tea("lemon","Starcofee",new PlaceLocation("Gran Via 34","Madrid"))
-    // ];
-    // callback(teaList);
-
     this.http.get(`${this.endPoint}/tea`).subscribe(response => {
+      console.log("res",response.json());
+      callback(response.json());
+    });
+  }
+  getIdList(teaID: string,callback){
+    this.http.get(`${this.endPoint}/tea/${teaID}`).subscribe(response => {
       console.log("res",response.json());
       callback(response.json());
     });
@@ -25,12 +25,13 @@ export class DataService {
     if(tea._id){
       this.http.put(`${this.endPoint}/tea/${tea._id}`,tea)
       .subscribe(response =>{
-        callback(response.json());
+        console.log("EDIT",response.json());
+        callback(true);
       });
     }else{
       this.http.post(`${this.endPoint}/tea`,tea)
       .subscribe(response =>{
-        callback(response.json());
+        callback(true);
       });
     }
   }

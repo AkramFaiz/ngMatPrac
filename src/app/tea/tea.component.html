@@ -45,7 +45,7 @@
         [vertical]="vertical" [(ngModel)]="tea.rating">
     </mat-slider>
     <mat-card-subtitle>
-      <mat-slide-toggle #tasteSlider (change)="tastingState(tasteSlider.checked)">Taste Ratings</mat-slide-toggle>
+      <mat-slide-toggle #tasteSlider [checked]="tastingR" (change)="tastingState(tasteSlider.checked)">Taste Ratings</mat-slide-toggle>
     </mat-card-subtitle>
     <section id='tasting' *ngIf="tasteSlider.checked">
       <label>Aroma: </label>
@@ -101,6 +101,6 @@
 
   <mat-card>
     <button mat-raised-button (click)="cancelClk()">Cancel</button>
-    <button mat-raised-button (click)="submitClk()" type="submit" disabled="disabled">Submit</button>
+    <button mat-raised-button (click)="submitClk()" type="submit">Submit</button>
   </mat-card>
 </form>
