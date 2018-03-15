@@ -1,0 +1,11 @@
+a{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 45px;
+    height: 45px;
+}
+mat-card{
+    margin-top:10px;
+    background: rgba(0, 0, 0, 0.36);
+}

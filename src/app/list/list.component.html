@@ -1,0 +1,12 @@
+<mat-card *ngFor="let tealis of list">
+      <mat-card-title>{{tealis.name}}</mat-card-title>
+      <mat-card-subtitle>Place: {{tealis.place}}</mat-card-subtitle>
+      <mat-card-actions>
+        <button mat-button><mat-icon>map</mat-icon></button>
+        <button mat-button><mat-icon>share</mat-icon></button>
+        <button mat-button><mat-icon>list</mat-icon></button>
+      </mat-card-actions>
+</mat-card>
+
+<a id="addNewTea" mat-fab routerLink="/tea"><mat-icon>add</mat-icon></a>
+

@@ -1,0 +1,22 @@
+form{
+    width: 90%;
+    margin: auto;
+    overflow: auto;
+    height: 88%;
+}
+input{
+    color: #ffffff;
+}
+mat-card{
+    margin-top:10px;
+    background: rgba(0, 0, 0, 0.36);
+}
+mat-card-title{
+    font-size: 18px;
+}
+mat-input-container,mat-select,mat-form-field,mat-slider{
+    width: 100%;
+}
+button[type="submit"]{
+    float: right;
+}

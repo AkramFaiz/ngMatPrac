@@ -1,0 +1,106 @@
+<form>
+  <mat-card>
+    <mat-card-title>Basic Information</mat-card-title>
+    <mat-form-field class="example-full-width">
+      <input type="text" matInput placeholder="Tea Name" name='name' [(ngModel)]="tea.name">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input type="text" matInput placeholder="Place Name" name='place' [(ngModel)]="tea.place">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Type" name="type" [(ngModel)]="tea.type">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Location Information</mat-card-title>
+    <mat-form-field class="example-full-width">
+      <input type="text" matInput placeholder="Address" name='address' [(ngModel)]="tea.location.address">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input type="text" matInput placeholder="City" name='city' [(ngModel)]="tea.location.city">
+    </mat-form-field>
+  </mat-card>
+
+  <mat-card>
+    <mat-form-field>
+      <textarea placeholder="Notes" matInput name="notes" [(ngModel)]="tea.notes" id="notes"></textarea>
+    </mat-form-field>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title>Ratings</mat-card-title>
+    <mat-slider name="overall" class="example-margin" 
+    [disabled]="disabled"
+        [invert]="invert"
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumb-label]="thumbLabel"
+        [tick-interval]="tickInterval"
+        [vertical]="vertical" [(ngModel)]="tea.rating">
+    </mat-slider>
+    <mat-card-subtitle>
+      <mat-slide-toggle #tasteSlider (change)="tastingState(tasteSlider.checked)">Taste Ratings</mat-slide-toggle>
+    </mat-card-subtitle>
+    <section id='tasting' *ngIf="tasteSlider.checked">
+      <label>Aroma: </label>
+      <mat-slider name="aroma" class="example-margin" 
+      [disabled]="disabled"
+        [invert]="invert"
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumb-label]="thumbLabel"
+        [tick-interval]="tickInterval"
+        [vertical]="vertical"
+      [(ngModel)]="tea.tastingRate.aroma">
+      </mat-slider>
+
+      <label>Flavor: </label>
+      <mat-slider name="flavor" class="example-margin" 
+      [disabled]="disabled"
+        [invert]="invert"
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumb-label]="thumbLabel"
+        [tick-interval]="tickInterval"
+        [vertical]="vertical" [(ngModel)]="tea.tastingRate.flavor">
+      </mat-slider>
+
+      <label>Sweetness: </label>
+      <mat-slider name="sweetness" class="example-margin" 
+      [disabled]="disabled"
+        [invert]="invert"
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumb-label]="thumbLabel"
+        [tick-interval]="tickInterval"
+        [vertical]="vertical" [(ngModel)]="tea.tastingRate.sweetness">
+      </mat-slider>
+
+      <label>Intensity: </label>
+      <mat-slider name="intensity" class="example-margin" [disabled]="disabled"
+      [invert]="invert"
+      [max]="max"
+      [min]="min"
+      [step]="step"
+      [thumb-label]="thumbLabel"
+      [tick-interval]="tickInterval"
+      [vertical]="vertical"
+       [(ngModel)]="tea.tastingRate.intensity">
+      </mat-slider>
+    </section>
+  </mat-card>
+
+  <mat-card>
+    <button mat-raised-button (click)="cancelClk()">Cancel</button>
+    <button mat-raised-button (click)="submitClk()" type="submit" disabled="disabled">Submit</button>
+  </mat-card>
+</form>
