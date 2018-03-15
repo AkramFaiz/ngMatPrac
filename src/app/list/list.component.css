@@ -8,8 +8,17 @@ a{
     position: fixed;
     right: 5px;
     bottom: 45px;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
+}
+.mat-card-title{
+    font-size: 16px;
+}
+.mat-card-subtitle{
+    font-size: 12px;
+}
+.material-icons{
+    font-size: 20px;
 }
 mat-card{
     margin-top:10px;
