@@ -11,6 +11,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
+import { ServiceWorkerModule } from '@angular/service-worker'
+import { environment } from '../environments/environment';
+
 import { FormsModule } from '@angular/forms';
 import { GeoLocationService } from './geo-location.service';
 import { DataService } from './data.service';
@@ -49,6 +52,7 @@ const appRoutes:Routes = [
     CheckComponent
   ],
   imports: [
+    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
