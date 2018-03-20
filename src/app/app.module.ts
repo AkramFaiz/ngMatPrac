@@ -10,6 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+//import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { ServiceWorkerModule } from '@angular/service-worker'
 import { environment } from '../environments/environment';
@@ -27,6 +28,7 @@ import { ListComponent } from './list/list.component';
 import { TeaComponent } from './tea/tea.component';
 import { HeaderComponent } from './header/header.component';
 import { CheckComponent } from './check/check.component';
+import { SnackBarComponent } from './snack-bar/snack-bar.component';
 
 const appRoutes:Routes = [
   {
@@ -49,7 +51,8 @@ const appRoutes:Routes = [
     ListComponent,
     TeaComponent,
     HeaderComponent,
-    CheckComponent
+    CheckComponent,
+    SnackBarComponent
   ],
   imports: [
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],

@@ -1,2 +1,3 @@
 <app-header></app-header>
 <router-outlet></router-outlet>
+<app-snack-bar *ngIf="snackBarVis" (btnClked)="userAction($event)" [msg]="currMsg" [bVal]="btnVal" @slideUpEffect></app-snack-bar>
