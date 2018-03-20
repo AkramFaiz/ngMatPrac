@@ -7,10 +7,12 @@
     {
       "root": "src",
       "outDir": "dist",
+      "serviceWorker": true,
       "assets": [
         "assets",
         "favicon.ico",
-        "manifest.json"
+        "manifest.json",
+        "ngsw-config.json"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -19,7 +21,6 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "serviceWorker": true,
       "styles": [
         "styles.css"
       ],

@@ -56,6 +56,13 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+.logo{
+	width: 40px;
+	height: 40px;
+	background: url(assets/Tea_leaf.png) no-repeat center;
+	background-size: 100% 100%;
+	margin: auto;
+}
 
 app-list a > .mat-button-wrapper{
     padding: 10px 0 !important;

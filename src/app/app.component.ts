@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { slideUpEffect } from './slideUpEffect';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,26 @@ export class AppComponent implements OnInit {
   eve: any;
   userActionVal: string;
   snackBarVis: boolean = false;
-  constructor() { }
+  constructor(private swUpdate: SwUpdate) { }
+  updateUI(){
+    if(navigator.onLine){
+      (document.querySelector("body") as any).style = "";
+    }else{
+      (document.querySelector("body") as any).style = "filter:grayscale(1)";
+    }
+  }
   ngOnInit(){
+      this.updateUI();
+      window.addEventListener("online",this.updateUI);
+      window.addEventListener("offline",this.updateUI);
+
+      if (this.swUpdate.isEnabled) {
+          this.swUpdate.available.subscribe(() => {
+              if(confirm("New version available. Load New Version?")) {
+                  window.location.reload();
+              }
+          });
+      }        
       // this.snackBarVis = true;
       if((navigator as any).standalone == false){
       // true in app , false browser

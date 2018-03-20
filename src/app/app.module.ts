@@ -55,7 +55,8 @@ const appRoutes:Routes = [
     SnackBarComponent
   ],
   imports: [
-    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
+    // environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
